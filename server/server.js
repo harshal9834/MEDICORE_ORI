@@ -55,7 +55,8 @@ app.use('/image', express.static(path.join(__dirname, '../image')));
 // ------------------
 // 🗄 MongoDB Connection
 // ------------------
-mongoose.connect(process.env.MONGODB_URI)
+console.log('▶ connecting to MongoDB with URI:', process.env.MONGODB_URI);
+mongoose.connect((process.env.MONGODB_URI || '').trim())
   .then(() => console.log('✅ MongoDB Connected Successfully'))
   .catch((err) => {
     console.error('❌ MongoDB Connection Error:', err);
